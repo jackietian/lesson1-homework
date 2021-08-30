@@ -1,0 +1,42 @@
+@import './colors.scss';
+
+ul {
+    padding-inline-start: 0;
+
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    
+    li {
+        width:12rem;
+        height:14rem;
+        margin: 2rem;
+    }
+
+    &.time {
+        width: 100%;
+        display: flex;
+        flex-wrap: nowrap;
+        justify-content: space-between;
+
+        li {
+            background: $darkOrange;
+            width: 2rem;
+            height: 2rem;
+            font-size: 2rem;
+            margin: 0;
+            padding: 0.25rem;
+            text-align: center;
+
+            &::after {
+                content: ':';
+                margin-left: 0.6rem;
+            }
+
+            &:last-child::after {
+                content: '';
+            }
+        }
+    }
+}

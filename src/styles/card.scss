@@ -1,0 +1,30 @@
+@import './colors.scss';
+
+.container {
+  text-align: center;
+
+  h1 {
+    color: $darkGrey;
+    font-size: 1.5rem;
+    font-weight: 600;
+    text-transform: capitalize;
+  }
+
+  &__content {
+    background: $orange;
+    border-radius: 0;
+    color: $white;
+
+    &__header {
+      background: $darkOrange;
+      padding: .5rem;
+    }
+
+    &__main {
+      height: 8rem;
+      display: flex;
+      align-items: center;
+      padding: 0 1rem;
+    }
+  }
+}
