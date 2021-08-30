@@ -1,6 +1,4 @@
 import React, { useState, useEffect } from "react";
-import "moment-timezone";
-import moment from "moment";
 
 const Clock = (props) => {
   const { region, city } = props;
@@ -9,17 +7,28 @@ const Clock = (props) => {
 
   const updateTimeCallback = () => {
     setInterval(() => {
-      const fullDate = moment()
-        .tz(`${region}/${city}`)
-        .format("dddd D MMMM YYYY HH:mm:ss");
-
+      // https://www.w3schools.com/jsref/jsref_tolocalestring.asp
+      const options = {
+        timeZone: `${region}/${city}`,
+        hour12: false,
+        year: 'numeric', 
+        month: 'long', 
+        day: 'numeric',
+        weekday: 'long',
+        hour: '2-digit',
+        minute: '2-digit',
+        second: '2-digit'
+      }
+      const fullDate = new Date().toLocaleString('en-us', options);
       setCurrentDate(fullDate);
     }, 1000);
   };
+
   useEffect(updateTimeCallback, [region, city]);
 
   const getDate = (date) => {
-    let splitArr = date.split(" ");
+    //Tuesday, August 31, 2021, 07:16:25
+    let splitArr = date.replaceAll(',', '').split(" ");
     splitArr.pop();
     return splitArr.join(" ");
   };
@@ -34,7 +43,7 @@ const Clock = (props) => {
     };
   };
 
-  if(!currentDate) return <h1>Loading...</h1>
+  if (!currentDate) return <h1>Loading...</h1>;
 
   return (
     <div className="container">

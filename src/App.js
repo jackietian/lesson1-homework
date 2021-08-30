@@ -1,4 +1,4 @@
-import Clock from "./components/Clock.jsx";
+import Clock from "./components/Clock.js";
 import "./styles/index.scss";
 
 const cities = [
